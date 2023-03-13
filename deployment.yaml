@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind : Deployment
+metadata:
+  name: api-deploy
+  labels:
+    app: api
+spec:
+  selector:
+    matchLabels:
+      app: api
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+        - name: api-pod
+          image: shubhendu027/test-api
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8990
+
+
